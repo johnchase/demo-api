@@ -1,18 +1,22 @@
 [tool.poetry]
 name = "\u001b"
-version = "0.3.0"
+version = "0.0.0"
 description = ""
-authors = ["John Chase <johnhchase@protonmail.com>"]
+authors = ["John Chase <john@jchase.org"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 SQLAlchemy = "^1.4.17"
 fastapi = "^0.65.1"
 pytest-cov = "^3.0.0"
+uvicorn = "^0.22.0"
+pyright = "^1.1.309"
+requests = "^2.30.0"
+pydantic = {extras = ["email"], version = "^1.10.7"}
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.9.2"
-black = "^21.5b2"
+black = "^22.3.0"
 codespell = "^2.1.0"
 isort = "^5.10.1"
 pytest = "^6.2.5"
@@ -32,7 +36,13 @@ exclude = "alembic/*"
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "0.3.0"
+version = "0.0.0"
 version_files = ["pyproject.toml:version", "app/__init__.py"]
 
-exclude = ["*alembic/*.py", "cdk-neocortex/*", "*nox*"]
+exclude = ["*nox*"]
+
+[tool.coverage.run]
+omit = ["*config*"]
+
+[tool.coverage.report]
+fail_under = 100

@@ -14,63 +14,72 @@ Prior to building the API I like to set code standards.
 2. Tests should check coverage, linting, and formatting. I will not be including a database here so migrations will not be tested
 3. I will use pytest as the testing framework, nox (a python implementation of tox) as the test environment manager, and poetry for configurationi
 
+### Deployment
+1. Poetry, I am using poetry as an packer manager and dependency resolver. I have found this to be the most sane option for managing python packages. 
+2. CI
+3. Pulumi 
 
 
-
-### Installation
-There are two ways that the API can be run and tested:
+### Install and serve the application
+There are two ways that the API can be run and tested, conda and Docker:
 
 #### 1. Conda
-First install poetry 
-Install poetry and packages
+First install make sure that you [conda](https://docs.conda.io/en/latest/miniconda.html) installed
+Then create a new conda environment and activate it:
 
+```bash
+conda create -n rupa python=3.10
+conda activate rupa
 ```
-curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+
+Install [poetry](https://python-poetry.org/docs/) and packages
+
+```bash
+curl -sSL https://install.python-poetry.org | python3 -
+```
+
+Install the package and dependencies
+```bash
 make install
 ```
 
-
-## Development
-Install development version
-```
-make install-dev
-```
-### Create a database 
-```
-create database fastapi_db;
-create user thatsyou with password 'changethis';
-ALTER ROLE thatsyou SET client_encoding TO 'utf8';
-ALTER ROLE thatsyou SET default_transaction_isolation TO 'read committed';
-ALTER ROLE thatsyou SET timezone TO 'UTC';
-GRANT ALL PRIVILEGES ON DATABASE fastapi_db to thatsyou;
-```
-
-### Set the environment variables
-```
-export POSTGRES_SERVER="localhost"
-export POSTGRES_USER="thatsyou"
-export POSTGRES_PASSWORD="changethis"
-export POSTGRES_DB="fastapi_db"
-export POSTGRES_TEST_DB="nameoftestdatabase"
-```
-
-### Create the database migration
-```
-make migrations
-```
-
-### Run the migrations to update the tables in the database
-```
-make build
-```
-### Check the installation  
-
-```
-make test
-```
-
-Serve the application
-```
+Serve the application and head to `localhost:5000/docs` to check it out
+```bash
 make serve
 ```
 
+#### 2. Docker
+Ensure that you have Docker installed
+
+```bash 
+make serve-docker
+```
+
+
+### Check the installation and run tests  
+
+#### Conda
+Install nox, this only needs to be done once per new environment
+```bash
+pip install nox
+```
+Run the tests
+```bash
+make test
+```
+
+#### Docker 
+Build the latest image if necessary
+```bash
+make build-docker
+```
+Then run the tests
+```bash
+make test-docker
+```
+
+Alternatively docker can be run directly, this will run the same commands as the Makefile
+```bash
+	docker compose build
+	docker compose run rupa nox 
+```

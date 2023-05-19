@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+  rupa:
+    build: ./
+    volumes:
+      - ./app:/code/app
+    ports:
+      - "5000:5000"

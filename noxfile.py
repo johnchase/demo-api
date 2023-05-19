@@ -1,7 +1,7 @@
 import nox
 
 
-@nox.session(python=["3.9"])
+@nox.session(python=["3.10"])
 def test(session):
     session.install("poetry")
     session.run("poetry", "lock", "--no-update")
@@ -9,7 +9,7 @@ def test(session):
         "poetry",
         "install",
     )
-    session.run("pytest", "--cov-report=term-missing", "--cov=app", "app/tests")
+    session.run("pytest", "app/tests")
 
 
 @nox.session
@@ -17,7 +17,7 @@ def coverage(session):
     session.install("poetry")
     session.run("poetry", "lock", "--no-update")
     session.run("poetry", "install")
-    session.run("coverage", "report")
+    session.run("pytest", "--cov-report=term-missing", "--cov=app", "app/tests")
 
 
 @nox.session
@@ -30,9 +30,9 @@ def lint(session):
     session.run("pytest", "--isort")
 
 
-# @nox.session
-# def typing(session):
-#     session.install("poetry")
-#     session.run("poetry", "lock", "--no-update")
-#     session.run("poetry", "install")
-#     session.run("pyright", "./app")
+@nox.session
+def typing(session):
+    session.install("poetry")
+    session.run("poetry", "lock", "--no-update")
+    session.run("poetry", "install")
+    session.run("pyright", "./app")

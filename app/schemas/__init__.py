@@ -1,1 +1,1 @@
-from .item import Item, ItemCreate, ItemInDB, ItemUpdate  # noqa
+from .email import Email
