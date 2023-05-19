@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "\u001b"
+version = "0.3.0"
+description = ""
+authors = ["John Chase <johnhchase@protonmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+SQLAlchemy = "^1.4.17"
+fastapi = "^0.65.1"
+pytest-cov = "^3.0.0"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.9.2"
+black = "^21.5b2"
+codespell = "^2.1.0"
+isort = "^5.10.1"
+pytest = "^6.2.5"
+commitizen = "^2.20.4"
+pre-commit = "^2.17.0"
+flake8-docstrings = "^1.6.0"
+pytest-cov = "^3.0.0"
+pytest-isort = "^3.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 119
+exclude = "alembic/*"
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.3.0"
+version_files = ["pyproject.toml:version", "app/__init__.py"]
+
+exclude = ["*alembic/*.py", "cdk-neocortex/*", "*nox*"]
