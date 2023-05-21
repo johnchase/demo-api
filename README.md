@@ -1,5 +1,5 @@
 ## Install and serve the application
-There are two ways that the API can be run and tested, conda and Docker:
+There are two ways that the API can be run and tested, Conda and Docker:
 
 For both Docker and Conda there are a couple environment variables that need to be set if you wish to use the functionality of the endpoint. You do not need to set these variables for testing, or if you wish to only view the API documentation.
 
@@ -8,7 +8,7 @@ export SENDGRID_API_KEY="your sendgrid key"
 export MAILGUN_API_KEY="your mailgun API key" 
 ```
 
-If you wish to send emails with sendgrid rather than mailgun you update set an additional environment variable 
+If you wish to send emails with SendGrid rather than MailGun you need to set an additional environment variable 
 
 ```bash
 export SEND_WITH_MAILGUN=False
@@ -101,9 +101,9 @@ Prior to building the API I like to set code standards. These are personal prefe
 
 ### Deployment
 1. I am using poetry as an packer manager and dependency resolver. I have found this to be the most sane option for managing python packages. 
-2. The application is congiured to use either Conda or Docker. I am using docker compose as I have found it to be a nice way to manage applications as they become larger.
+2. The application is configured to use either Conda or Docker. I am using docker compose as I have found it to be a nice way to manage applications as they become larger.
 
-I configured the application so that it will only make request to a single email server. In order to change the server the application has to be redeployed with a new configuration. I would probably prefer that the server is able to be changed by the user or based on a response code, however, it depends on the application requirements. This API is configured in such a way that it would be trivial to adopt an alternative approach to email server selection. 
+I configured the application so that it will only make requests to a single email server. In order to change the server the application has to be redeployed with a new configuration. I would probably prefer that the server is able to be changed by the user or based on a response code, however, it depends on the application requirements. This API is written in such a way that it would be trivial to adopt an alternative approach to email server selection. 
 
 ### Trade-offs
 I would have liked to spend a bit of time on CI/CD, I was hoping to write a deployment for AWS with Pulumi but did not have time. It would have been nice to configure github to enforce the test suite, and deploy the application.
