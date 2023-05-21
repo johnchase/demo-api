@@ -1,7 +1,7 @@
 ## Install and serve the application
 There are two ways that the API can be run and tested, conda and Docker:
 
-For both Docker and Conda there are a couple environment variables that need to be set, if you wish to use the functionality of the endpoint. You do not need to set these variables for testing, or if you wish to only view the API documentation.
+For both Docker and Conda there are a couple environment variables that need to be set if you wish to use the functionality of the endpoint. You do not need to set these variables for testing, or if you wish to only view the API documentation.
 
 ```bash
 export SENDGRID_API_KEY="your sendgrid key" 

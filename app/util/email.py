@@ -63,6 +63,4 @@ def send_with_sendgrid(email: schemas.Email):
         "subject": email.subject,
         "content": [{"type": "text/plain", "value": email.body}],
     }
-    print(headers)
-    print(data)
     return requests.post(settings.SENDGRID_URL, headers=headers, json=data)
