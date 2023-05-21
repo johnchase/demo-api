@@ -3,6 +3,10 @@ version: '3.7'
 services:
   rupa:
     build: ./
+    environment:
+      MAILGUN_API_KEY: "${MAILGUN_API_KEY}"
+      SENDGRID_API_KEY: "${SENDGRID_API_KEY}"
+      SEND_WITH_MAILGUN: True
     volumes:
       - ./app:/code/app
     ports:

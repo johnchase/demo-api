@@ -1,5 +1,5 @@
-"""Email schemas module."""
-from pydantic import BaseModel, EmailStr
+import markdownify
+from pydantic import BaseModel, EmailStr, validator
 
 
 # Shared properties
@@ -16,5 +16,16 @@ class Email(BaseModel):
     class Config:
         """Config."""
 
-        # from is a reserced keyword in python and we can't use it directly
+        # from is a reserved keyword in python and we can't use it directly in the schema
         fields = {"from_": "from"}
+
+    @validator("body", pre=True)
+    def parse_html(cls, value):
+        """parse_html.
+
+        Parameters
+        ----------
+        value :
+            value
+        """
+        return markdownify.markdownify(value, heading_style="ATX")

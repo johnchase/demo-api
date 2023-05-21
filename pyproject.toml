@@ -2,17 +2,15 @@
 name = "\u001b"
 version = "0.0.0"
 description = ""
-authors = ["John Chase <john@jchase.org"]
+authors = ["John Chase <john@jchase.org>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-SQLAlchemy = "^1.4.17"
 fastapi = "^0.65.1"
-pytest-cov = "^3.0.0"
 uvicorn = "^0.22.0"
-pyright = "^1.1.309"
 requests = "^2.30.0"
 pydantic = {extras = ["email"], version = "^1.10.7"}
+markdownify = "^0.11.6"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.9.2"
@@ -23,8 +21,9 @@ pytest = "^6.2.5"
 commitizen = "^2.20.4"
 pre-commit = "^2.17.0"
 flake8-docstrings = "^1.6.0"
-pytest-cov = "^3.0.0"
 pytest-isort = "^3.0.0"
+pyright = "^1.1.309"
+pytest-cov = "^3.0.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -42,7 +41,7 @@ version_files = ["pyproject.toml:version", "app/__init__.py"]
 exclude = ["*nox*"]
 
 [tool.coverage.run]
-omit = ["*config*"]
+omit = ["*config*", "main.py", "*/tests/*"]
 
 [tool.coverage.report]
 fail_under = 100
