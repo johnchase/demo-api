@@ -9,12 +9,13 @@ router = APIRouter()
 
 @router.post(
     "/",
-    response_model=dict[str, str],
+    response_model=Any,
     summary="Send an email",
     # description="Send and email through a third party email service. ",
 )
 def email(email: schemas.Email) -> Any:
-    """
+    """Email.
+
     **NOTE:** This API will return a 200 as long as a valid request is submitted to the third party email service.
     This means that a 200 doesn't guarantee a successful email was sent. Consult the response body for more
     information.
@@ -35,11 +36,7 @@ def email(email: schemas.Email) -> Any:
 
     Returns
     -------
-    Anyj
+    Any
     """
     response = util.send_email(email)
-
-    # This will return 200 regardless of the email server response,
-    # this may or may not be the correct way to handle it
-    # depending on what the application requirements are
     return {"External Server Response": response.status_code}

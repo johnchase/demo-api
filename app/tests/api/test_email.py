@@ -73,7 +73,8 @@ def test_correct_payload_sendgrid(client: TestClient, email_payload: dict) -> No
         response = client.post(f"{settings.API_V1_STR}/email/", json.dumps(email_payload))
 
     settings.SEND_WITH_MAILGUN = True
-    _assert_status(response)
+    assert response.status_code == 200
+    # _assert_status(response)
 
 
 def test_correct_payload_mailgun(client: TestClient, email_payload: dict) -> None:

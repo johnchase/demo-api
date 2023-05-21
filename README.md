@@ -47,7 +47,11 @@ Ensure that you have [Docker](https://www.docker.com/) installed
 make serve-docker
 ```
 
-### Check the installation and run tests  
+## Use the API!
+Once the app is served you can view the documentation at `http://localhost:5000/docs` and submit a request. 
+**NOTE:** You need to have an account with MailGun or SendGrid or both, and have set the API keys as per instructions above. You will need to congiure the `from` email address based on the third party instructions
+
+## Check the installation and run tests  
 
 ### 1. Conda
 Install nox, this only needs to be done once per new environment
@@ -71,8 +75,8 @@ make test-docker
 
 Alternatively docker can be run directly, this will run the same commands as the Makefile
 ```bash
-	docker compose build
-	docker compose run rupa nox 
+docker compose build
+docker compose run rupa nox 
 ```
 
 
@@ -81,7 +85,7 @@ Alternatively docker can be run directly, this will run the same commands as the
 #### framework:
 I used FastAPI to build this API. The decision to use FastAPI is purely due to preference. Python is my most proficient language, and I am very familiar with FastAPI. I have used Django and Flask, and although they would be good alternatives I prefer FastAPI
 
-This API is based on [code](https://github.com/johnchase/fastapi-factory) I wrote previously. I found I was frequently making APIs and FastAPI does not generate a default project structure in the way that something like Django does. The template repository I made was intended to be a paired down version of the [template](https://github.com/tiangolo/full-stack-fastapi-postgresql) that FastAPI provides. Although I used this template all of the work here is my own and was generated specifically for this exercise.
+This API is based on [code](https://github.com/johnchase/fastapi-factory) I wrote previously. I found I was frequently making APIs and FastAPI does not generate a default project structure in the way that something like Django does. The template repository I made was intended to be a paired down version of the [template](https://github.com/tiangolo/full-stack-fastapi-postgresql) that FastAPI provides. Although I used this template all of the work here (including the template) is my own and was generated specifically for this exercise.
 
 ### Expectations
 Prior to building the API I like to set code standards. These are personal preference and by no means the only or best way to manage code quality.
