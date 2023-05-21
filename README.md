@@ -49,7 +49,7 @@ make serve-docker
 
 ## Use the API!
 Once the app is served you can view the documentation at `http://localhost:5000/docs` and submit a request. 
-**NOTE:** You need to have an account with MailGun or SendGrid or both, and have set the API keys as per instructions above. You will need to congiure the `from` email address based on the third party instructions
+**NOTE:** You need to have an account with MailGun or SendGrid or both, and have set the API keys as per instructions above. You will need to configure the `from` email address based on the third party instructions
 
 ## Check the installation and run tests  
 
